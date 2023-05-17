@@ -26,7 +26,68 @@ Finding the Anti-Aging Potential of chemical compounds
 
 **Quick setup**
 
-Click [here]() to download a dependencies.txt file and setup the environment by 
+The environment setup can be accomplished dierctly by the follwing command
 ```
-$ pip install -r dependencies.txt
+$ pip install -r requirement.txt
+```
+The **requirement.txt** can be found [here](https://github.com/the-ahuja-lab/AgeXtend/blob/main/env/requirement.txt)
+
+
+## How to use AgeXtend?
+
+### Installation using pip 
+```
+$ pip install -i https://test.pypi.org/simple/ AgeXtend
+```
+
+#### Examples
+
+To get predictions for Anti-Aging properties:<br/>
+```
+>>> from AgeXtend import Predictor
+```
+Prepare a list of canonical SMILES (Openbabel generated) strings
+```
+>>> smiles = ['ClCC=C', 'C=CCOC(=O)CC(C)C'] 
+```
+Create AgeXtend type object of any query compunds of interest (i.e. list of canonical SMILES)
+```
+>>> agex_obj = Predictor.featurize(smiles)
+```
+Use the AgeXtend object for Anti-Aging property predictions
+```
+>>> output = Predictor.predict(agex_obj)
+```
+To get the list of result dataframes produced as output
+```
+>>> output.keys()
+dict_keys(['Anti_Aging_Prediction', 'HallMarks_Status', 'HallMarks_Probabilities'])
+```
+**Note:** HallMarks_Probabilities will be empty by default, unless selected otherwise by additional arguments
+
+To get any specific result dataframe
+```
+>>> output['HallMarks_Status']
+```
+
+#### Additional arguments:
+**AgeXtend** also supports the following functionalities along with the Anti-Aging Predictions, that can be chosen using boolean option (True)
+
+| Parameter Name | Description | Type | Default value | **Output(If True)** |
+| -------- | -------- | -------- | -------- | -------- |
+| probs | Probabilities of having Anti-Aging / Toxic properties | boolean  | False | HallMarks_Probabilities / HallMarks_Toxicity_Probabilities |
+| HC | Health/Toxicity Check | boolean  | False | HallMarks_Toxicity_Status |
+| TS | HallMark of Aging Tanimoto Similarity Test | boolean  | False | HallMark_like_response |
+| BDL | BindingDB Target Information and Druggability (Lipinski Rule) | boolean  | False | Druggability_and_Potential_Targets |
+
+
+**Example**
+```
+>>> output = Predictor.predict(agex_obj, TS=True)
+>>> output.keys()
+dict_keys(['Anti_Aging_Prediction', 'HallMarks_Status', 'HallMarks_Probabilities', 'HallMark_like_response'])
+>>> 
+>>> output = Predictor.predict(agex_obj, HC=True, BDL=True)
+>>> output.keys()
+dict_keys(['Anti_Aging_Prediction', 'HallMarks_Toxicity_Status', 'HallMarks_Toxicity_Probabilities', 'Druggability_and_Potential_Targets'])
 ```
