@@ -110,6 +110,7 @@ Use openbebl format SMILE of the query compound
 ```
 
 Unzip the **AgeXtendBroswerOut.zip** file to visualise/print the generated report (HTML format)
+
 **Note:** the **report file** (AgeXtend_BrowserOut.html) must be in the same folder with the **images** folder
 
 
