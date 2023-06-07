@@ -30,7 +30,7 @@ Finding the Anti-Aging Potential of chemical compounds
 
 **Quick setup**
 
-The environment setup can be accomplished dierctly by the follwing command
+The environment setup can be accomplished directly by the following command
 ```
 $ pip install -r requirement.txt
 ```
@@ -59,7 +59,7 @@ Prepare a list of canonical SMILES (Openbabel generated) strings
 ```
 >>> smiles = ['ClCC=C', 'C=CCOC(=O)CC(C)C'] 
 ```
-Create AgeXtend type object of any query compunds of interest (i.e. list of canonical SMILES)
+Create an AgeXtend type object of any query compounds of interest (i.e. list of canonical SMILES)
 ```
 >>> agex_obj = Predictor.featurize(smiles)
 ```
@@ -104,16 +104,16 @@ dict_keys(['Anti_Aging_Prediction', 'HallMarks_Toxicity_Status', 'HallMarks_Toxi
 
 ### Browser
 
-To acess the AgeXtend pre-complied prediction data of various Databases:<br/>
+To access the AgeXtend pre-complied prediction data of various Databases:<br/>
 ```
 >>> from AgeXtend import Browser
 ```
-Use openbebl format SMILE of the query compound
+Use openbabel format SMILE of the query compound
 ```
 >>> Browser.search(query='OC(=O)CCCc1c[nH]c2c1cccc2', output='/path/to/output/folder/')
 ```
 
-Unzip the **AgeXtendBroswerOut.zip** file to visualise/print the generated report (HTML format)
+Unzip the **AgeXtendBroswerOut.zip** file to visualize/print the generated report (HTML format)
 
 **Note:** the **report file** (AgeXtend_BrowserOut.html) must be in the same folder with the **images** folder
 
