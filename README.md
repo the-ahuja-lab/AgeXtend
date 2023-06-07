@@ -40,7 +40,12 @@ The **requirement.txt** can be found [here](https://github.com/the-ahuja-lab/Age
 $ pip install -i https://test.pypi.org/simple/ AgeXtend
 ```
 
-#### Examples
+## Modules
+AgeXtend supports 2 distinct modules:<br/>
+1. Predictor
+2. Browser
+
+### Predictor
 
 To get predictions for Anti-Aging properties:<br/>
 ```
@@ -90,4 +95,32 @@ dict_keys(['Anti_Aging_Prediction', 'HallMarks_Status', 'HallMarks_Probabilities
 >>> output = Predictor.predict(agex_obj, HC=True, BDL=True)
 >>> output.keys()
 dict_keys(['Anti_Aging_Prediction', 'HallMarks_Toxicity_Status', 'HallMarks_Toxicity_Probabilities', 'Druggability_and_Potential_Targets'])
+```
+
+
+### Browser
+
+To acess the AgeXtend pre-complied prediction data of various Databases:<br/>
+```
+>>> from AgeXtend import Browser
+```
+Use openbebl format SMILE of the query compound
+```
+>>> Browser.search(query='OC(=O)CCCc1c[nH]c2c1cccc2', output='/path/to/output/folder/')
+```
+
+Unzip the **AgeXtendBroswerOut.zip** file to visualise/print the generated report (HTML format)
+**Note:** the **report file** (AgeXtend_BrowserOut.html) must be in the same folder with the **images** folder
+
+
+#### Additional arguments:
+**AgeXtend** also supports the use of locally complied Predictor module outputs (Folder containing CSV format outputs)
+
+| Parameter Name | Description | Default Database |
+| -------- | -------- | -------- |
+| path | Path to the AgeXtend pre-complied prediction database | gutMGene |
+
+**Example**
+```
+>>> Browser.search(path='/path/to/Database/Folder/', query='OC(=O)CCCc1c[nH]c2c1cccc2', output='/path/to/output/folder/')
 ```
