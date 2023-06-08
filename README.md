@@ -5,9 +5,10 @@
 <div align="center">
 <img src="Images/Overview.png"></div>
 <br>
-Finding the Anti-Aging Potential of chemical compounds
 
-## Environment Setup
+**AgeXtend** is a multimodal, bioactivity-based, and mechanism-backed Explainable AI Predictor for geroprotectors. The first work package, **Predictor**, involves a bioactivity-based classifier for predicting geroprotective compounds, coupled with an **explainability** module providing mechanistic insights into biological processes behind the predictions, a **toxicity** module to evaluate their toxicity in the biological context, and finally, a **target** module that suggests protein targets of the putative geroprotective compounds.
+
+## Environment Setup (done using requirement.txt)
 
 **Major dependencies**
 1. [Signaturizer(v1.1.11)](https://gitlabsbnb.irbbarcelona.org/packages/signaturizer)
@@ -30,11 +31,10 @@ Finding the Anti-Aging Potential of chemical compounds
 
 **Quick setup**
 
-The environment setup can be accomplished directly by the following command
+The following file - [requirement.txt](https://github.com/the-ahuja-lab/AgeXtend/blob/main/env/requirement.txt) will be used for the environment setup and by running the following command.
 ```
 $ pip install -r requirement.txt
 ```
-The **requirement.txt** can be found [here](https://github.com/the-ahuja-lab/AgeXtend/blob/main/env/requirement.txt)
 
 
 ## How to use AgeXtend?
@@ -44,14 +44,16 @@ The **requirement.txt** can be found [here](https://github.com/the-ahuja-lab/Age
 $ pip install -i https://test.pypi.org/simple/ AgeXtend
 ```
 
-## Modules
-AgeXtend supports 2 distinct modules:<br/>
+## Work Packages
+AgeXtend supports 2 distinct work packages:<br/>
 1. Predictor
 2. Browser
 
 ### Predictor
 
-To get predictions for Anti-Aging properties:<br/>
+#### Prediction Module ####
+
+Predicts the anti aging potential for your input SMILES:<br/>
 ```
 >>> from AgeXtend import Predictor
 ```
@@ -59,24 +61,24 @@ Prepare a list of canonical SMILES (Openbabel generated) strings
 ```
 >>> smiles = ['ClCC=C', 'C=CCOC(=O)CC(C)C'] 
 ```
-Create an AgeXtend type object of any query compounds of interest (i.e. list of canonical SMILES)
+Create an AgeXtend type object to featurize your query compounds (i.e. list of canonical SMILES)
 ```
 >>> agex_obj = Predictor.featurize(smiles)
 ```
-Use the AgeXtend object for Anti-Aging property predictions
+Use the AgeXtend object for further predictions
 ```
 >>> output = Predictor.predict(agex_obj)
 ```
-To get the list of result dataframes produced as output
+Get the list of resulting dataframes that are part of the rest of the modules
 ```
 >>> output.keys()
-dict_keys(['Anti_Aging_Prediction', 'HallMarks_Status', 'HallMarks_Probabilities'])
+dict_keys(['Anti_Aging_Prediction', 'Explainability_Status', 'Explainability_Probabilities'])
 ```
-**Note:** HallMarks_Probabilities will be empty by default, unless selected otherwise by additional arguments
+**Note:** Explainability_Probabilities will be empty by default, unless selected otherwise by additional arguments.
 
-To get any specific result dataframe
+To get result dataframe of any specific module
 ```
->>> output['HallMarks_Status']
+>>> output['Explainability_Status']
 ```
 
 #### Additional arguments:
@@ -84,9 +86,9 @@ To get any specific result dataframe
 
 | Parameter Name | Description | Type | Default value | **Output(If True)** |
 | -------- | -------- | -------- | -------- | -------- |
-| probs | Probabilities of having Anti-Aging / Toxic properties | boolean  | False | HallMarks_Probabilities / HallMarks_Toxicity_Probabilities |
-| HC | Health/Toxicity Check | boolean  | False | HallMarks_Toxicity_Status |
-| TS | HallMark of Aging Tanimoto Similarity Test | boolean  | False | HallMark_like_response |
+| probs | Probabilities of having Anti-Aging Potential / Toxic properties | boolean  | False | Explainability_Probabilities / Explainability_Toxicity_Probabilities |
+| HC | Health/Toxicity Check | boolean  | False | Explainability_Toxicity_Status |
+| TS | Sub Explainability Level Tanimoto Similarity Test | boolean  | False | Explainability_response |
 | BDL | BindingDB Target Information and Druggability (Lipinski Rule) | boolean  | False | Druggability_and_Potential_Targets |
 
 
@@ -94,17 +96,17 @@ To get any specific result dataframe
 ```
 >>> output = Predictor.predict(agex_obj, TS=True)
 >>> output.keys()
-dict_keys(['Anti_Aging_Prediction', 'HallMarks_Status', 'HallMarks_Probabilities', 'HallMark_like_response'])
+dict_keys(['Anti_Aging_Prediction', 'Explainability_Status', 'Explainability_Probabilities', 'Explainability_response'])
 >>> 
 >>> output = Predictor.predict(agex_obj, HC=True, BDL=True)
 >>> output.keys()
-dict_keys(['Anti_Aging_Prediction', 'HallMarks_Toxicity_Status', 'HallMarks_Toxicity_Probabilities', 'Druggability_and_Potential_Targets'])
+dict_keys(['Anti_Aging_Prediction', 'Explainability_Toxicity_Status', 'Explainability_Toxicity_Probabilities', 'Druggability_and_Potential_Targets'])
 ```
 
 
 ### Browser
 
-To access the AgeXtend pre-complied prediction data of various Databases:<br/>
+To access the AgeXtend pre-complied predictions data of various databases:<br/>
 ```
 >>> from AgeXtend import Browser
 ```
@@ -113,7 +115,7 @@ Use openbabel format SMILE of the query compound
 >>> Browser.search(query='OC(=O)CCCc1c[nH]c2c1cccc2', output='/path/to/output/folder/')
 ```
 
-Unzip the **AgeXtendBroswerOut.zip** file to visualize/print the generated report (HTML format)
+Unzip the **AgeXtendBrowserOut.zip** file to visualize/print the generated report (HTML format)
 
 **Note:** the **report file** (AgeXtend_BrowserOut.html) must be in the same folder with the **images** folder
 
@@ -129,3 +131,4 @@ Unzip the **AgeXtendBroswerOut.zip** file to visualize/print the generated repor
 ```
 >>> Browser.search(path='/path/to/Database/Folder/', query='OC(=O)CCCc1c[nH]c2c1cccc2', output='/path/to/output/folder/')
 ```
+
