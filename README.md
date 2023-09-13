@@ -10,6 +10,12 @@
 The first work package, **Predictor**, involves a bioactivity-based classifier for predicting geroprotective compounds, coupled with an **explainability** module providing mechanistic insights into biological processes behind the predictions, a **toxicity** module to evaluate their toxicity in the biological context, and finally, a **target** module that suggests protein targets of the putative geroprotective compounds.
 The second work package, **Browser**, allows the user to explore through the 20 pre-screened databases specifically curated for these functionalities.
 
+## License Key
+
+**AgeXtend is free for academic institutions, however, for commercial utilization a commercial license key is required. Users (academic/commercial) may apply for a valid "License Key" [here](https://forms.gle/y1sCpSGEAML8XWGGA).**
+
+You can also generate your own predictions using AgeXtend’s [Colab notebook](https://colab.research.google.com/drive/1yS70GuI4H29KICQlLDQHLDk3nyULWJ94)
+
 ## Environment Setup (done using requirement.txt)
 
 **Major dependencies**
@@ -46,6 +52,17 @@ $ pip install -r requirement.txt
 $ pip install -i https://test.pypi.org/simple/ AgeXtend
 ```
 
+### License activation (One time)
+```
+>>> from AgeXtend import Predictor 
+```
+Activate AgeXtend license
+```
+>>> Predictor.license('license key') #Example: mk.license('KKKVFZ41111WF6RTQ')
+```
+To apply for the license [click here](https://forms.gle/y1sCpSGEAML8XWGGA)
+
+
 ## Work Packages
 AgeXtend supports 2 distinct work packages:<br/>
 1. Predictor
@@ -55,7 +72,7 @@ AgeXtend supports 2 distinct work packages:<br/>
 
 #### Prediction and Explainability Module ####
 
-Predicts the anti aging potential for the input SMILES:<br/>
+Predicts the anti-aging potential for the input SMILES:<br/>
 ```
 >>> from AgeXtend import Predictor
 ```
@@ -71,21 +88,21 @@ Use the AgeXtend object for predictions
 ```
 >>> output = Predictor.predict(agex_obj)
 ```
-Get the list of resulting dataframes that are part of the rest of the modules
+Get the list of resulting data frames that are part of the rest of the modules
 ```
 >>> output.keys()
 dict_keys(['Anti_Aging_Prediction', 'Explainability_Status', 'Explainability_Probabilities'])
 ```
-**Note:** Explainability_Probabilities will be empty by default, unless selected otherwise by supplying additional arguments.
+**Note:** Explainability_Probabilities will be empty by default unless selected otherwise by supplying additional arguments.
 
-Get result of a specific output dataframe
+Get the result of a specific output data frame
 ```
 >>> output['Explainability_Status']
 ```
 #### Sub Explainability and Target Module ####
 
 ##### Additional arguments:
-**AgeXtend** also supports the following modules along with the Prediction and Explainability modules, that can be chosen using boolean option (True)
+**AgeXtend** also supports the following modules along with the Prediction and Explainability modules, which can be chosen using the boolean option (True)
 
 | Parameter Name | Description | Type | Default value | **Output(If True)** |
 | -------- | -------- | -------- | -------- | -------- |
@@ -113,7 +130,7 @@ To explore the AgeXtend pre-complied predictions of various databases:<br/>
 ```
 >>> from AgeXtend import Browser
 ```
-Use Open Babel Generate Canonical SMILES format of the query compound as input
+Use Open Babel to Generate Canonical SMILES format of the query compound as input
 ```
 >>> Browser.search(query='OC(=O)CCCc1c[nH]c2c1cccc2', output='/path/to/output/folder/')
 ```
