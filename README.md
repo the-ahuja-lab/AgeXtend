@@ -58,7 +58,7 @@ $ pip install -i https://test.pypi.org/simple/ AgeXtend
 ```
 Activate AgeXtend license
 ```
->>> Predictor.license('license key') #Example: mk.license('KKKVFZ41111WF6RTQ')
+>>> Predictor.license('license key') #Example: Predictor.license('KKKVFZ41111WF6RTQ')
 ```
 To apply for the license [click here](https://forms.gle/y1sCpSGEAML8XWGGA)
 
