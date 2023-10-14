@@ -173,3 +173,19 @@ Unzip the **AgeXtendBrowserOut.zip** file to visualize/print the generated repor
 ```
 >>> Browser.search(path='/path/to/Database/Folder/', query='OC(=O)CCCc1c[nH]c2c1cccc2', output='/path/to/output/folder/')
 ```
+
+### Pre-complied AgeXtend Prediction Databases
+| DB Name | DB version | FTP size | Unziped size | FTP link |
+| -------- | -------- | -------- | -------- | -------- |
+| FOODB |  | 63M |  |  |
+| HMDB |  | 231M |  |  |
+| IMPPAT |  | 4K |  |  |
+| AfroDB |  | 756K |  |  |
+| AgingAtlas |  | 748K |  |  |
+| Chembridge |  | 788K |  |  |
+| ChemdivBBlocks |  | 39M |  |  |
+| CMNPD |  | 20M |  |  |
+| DDPD |  | 4K |  |  |
+| ECMDB |  | 4K |  |  |
+| RepoHub |  | 3.9M |  |  |
+
