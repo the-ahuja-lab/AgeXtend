@@ -123,6 +123,28 @@ dict_keys(['Anti_Aging_Prediction', 'Explainability_Status', 'Explainability_Pro
 dict_keys(['Anti_Aging_Prediction', 'Explainability_Toxicity_Status', 'Explainability_Toxicity_Probabilities', 'Druggability_and_Potential_Targets'])
 ```
 
+####  Efficient Bulk Prediction / Custom AgeXtend Database
+Predictor module also provides functionalities for efficient bulk data prediction
+```
+>>> Predictor.bulk_predict(input=smiles_list) 
+```
+Or user can also use pre-calculated AgeXtend type object as input
+```
+>>> agex_obj = Predictor.featurize(smiles_list)
+>>> Predictor.bulk_predict(input=agex_obj)
+```
+
+##### Additional arguments:
+
+| Parameter Name | Description | Type | Default value |
+| -------- | -------- | -------- | -------- |
+| outfolder | Output Database type folder name | string | AgeXtendDB |
+| chunksize | Number of predictions input per iteration for faster job completion | Integer | 10000 |
+
+**Note**
+The output folder of Bulk prediction function can be used as a Custom database for input in AgeXtend Browser module
+
+
 
 ### Browser
 
