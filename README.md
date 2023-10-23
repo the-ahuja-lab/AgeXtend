@@ -24,7 +24,7 @@ You can also generate your own predictions using AgeXtend’s [Colab notebook](h
 
 **Minor dependencies**
 1. os
-2. [scikit-learn (v0.23.2)](https://scikit-learn.org/stable/whats_new/v1.0.html)
+2. [scikit-learn (v1.2.1)](https://scikit-learn.org/stable/whats_new/v1.0.html)
 3. [xgboost (v1.5.1)](https://github.com/dmlc/xgboost)
 4. [pandas (v1.4.3)](https://pandas.pydata.org/)
 5. [numpy (v>=1.20.3)](https://numpy.org)
