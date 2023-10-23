@@ -19,22 +19,21 @@ You can also generate your own predictions using AgeXtend’s [Colab notebook](h
 ## Environment Setup (done using requirement.txt)
 
 **Major dependencies**
-1. [Signaturizer(v1.1.11)](https://gitlabsbnb.irbbarcelona.org/packages/signaturizer)
-2. [RDKit(v2022.3.1)](https://www.rdkit.org/)
-3. [LIME](https://github.com/marcotcr/lime)
+1. [Signaturizer (v1.1.11)](https://gitlabsbnb.irbbarcelona.org/packages/signaturizer)
+2. [RDKit (v2022.3.1)](https://www.rdkit.org/)
 
 **Minor dependencies**
 1. os
-2. [scikit-learn v0.23.2](https://scikit-learn.org/stable/whats_new/v1.0.html)
-3. [xgboost v1.5.1](https://github.com/dmlc/xgboost)
-4. [pandas](https://pandas.pydata.org/)
-5. [numpy](https://numpy.org)
+2. [scikit-learn (v0.23.2)](https://scikit-learn.org/stable/whats_new/v1.0.html)
+3. [xgboost (v1.5.1)](https://github.com/dmlc/xgboost)
+4. [pandas (v1.4.3)](https://pandas.pydata.org/)
+5. [numpy (v>=1.20.3)](https://numpy.org)
 6. [tqdm](https://tqdm.github.io)
-7. [joblib](https://pypi.org/project/joblib/)
-8. [matplotlib](https://pypi.org/project/matplotlib/)
-9. [seaborn](https://seaborn.pydata.org/)
-10. [importlib](https://pypi.org/project/importlib/)
-11. [importlib-resources v5.7.1](https://github.com/python/importlib_resources)
+7. [joblib (v1.1.1)](https://pypi.org/project/joblib/)
+8. [matplotlib (v>=3.2.2)](https://pypi.org/project/matplotlib/)
+9. [seaborn (v0.11.2)](https://seaborn.pydata.org/)
+10. [importlib ](https://pypi.org/project/importlib/)
+11. [importlib-resources (v5.7.1)](https://github.com/python/importlib_resources)
 
 
 **Quick setup**
@@ -49,10 +48,12 @@ $ pip install -r requirement.txt
 
 ### Installation using pip 
 ```
-$ pip install -i https://test.pypi.org/simple/ AgeXtend
+$ pip install -i https://test.pypi.org/simple/AgeXtend
 ```
 
 ### License activation (One time)
+To apply for the license [click here](https://forms.gle/y1sCpSGEAML8XWGGA)
+
 ```
 >>> from AgeXtend import Predictor 
 ```
@@ -60,8 +61,6 @@ Activate AgeXtend license
 ```
 >>> Predictor.license('license key') #Example: Predictor.license('KKKVFZ41111WF6RTQ')
 ```
-To apply for the license [click here](https://forms.gle/y1sCpSGEAML8XWGGA)
-
 
 ## Work Packages
 AgeXtend supports 2 distinct work packages:<br/>
@@ -104,10 +103,10 @@ Get the result of a specific output data frame
 ##### Additional arguments:
 **AgeXtend** also supports the following modules along with the Prediction and Explainability modules, which can be chosen using the boolean option (True)
 
-| Parameter Name | Description | Type | Default value | **Output(If True)** |
+| Parameter Name | Description | Type | Default value | **Output (If True)** |
 | -------- | -------- | -------- | -------- | -------- |
-| probs | Probability of having Anti-Aging Potential / Toxicity Potential | boolean  | False | Explainability_Probabilities / Explainability_Toxicity_Probabilities |
-| HC | Health/Toxicity Check | boolean  | False | Explainability_Toxicity_Status |
+| probs | Probabilities of Explainability and/or Toxicity Module | boolean  | False | Explainability_Probabilities / Explainability_Toxicity_Probabilities |
+| HC | Run Toxicity Module (Health Check) | boolean  | False | Explainability_Toxicity_Status |
 | TS | Sub Explainability Level Tanimoto Similarity Test | boolean  | False | Explainability_response |
 | BDL | BindingDB Target Information and Druggability (Lipinski Rule) | boolean  | False | Druggability_and_Potential_Targets |
 
@@ -117,7 +116,6 @@ Get the result of a specific output data frame
 >>> output = Predictor.predict(agex_obj, TS=True)
 >>> output.keys()
 dict_keys(['Anti_Aging_Prediction', 'Explainability_Status', 'Explainability_Probabilities', 'Explainability_response'])
->>> 
 >>> output = Predictor.predict(agex_obj, HC=True, BDL=True)
 >>> output.keys()
 dict_keys(['Anti_Aging_Prediction', 'Explainability_Toxicity_Status', 'Explainability_Toxicity_Probabilities', 'Druggability_and_Potential_Targets'])
@@ -175,17 +173,17 @@ Unzip the **AgeXtendBrowserOut.zip** file to visualize/print the generated repor
 ```
 
 ### Pre-complied AgeXtend Prediction Databases
-| DB Name | DB version | FTP size | Unziped size | FTP link |
-| -------- | -------- | -------- | -------- | -------- |
-| FOODB |  | 63M |  |  |
-| HMDB |  | 231M |  |  |
-| IMPPAT |  | 4K |  |  |
-| AfroDB |  | 756K |  |  |
-| AgingAtlas |  | 748K |  |  |
-| Chembridge |  | 788K |  |  |
-| ChemdivBBlocks |  | 39M |  |  |
-| CMNPD |  | 20M |  |  |
-| DDPD |  | 4K |  |  |
-| ECMDB |  | 4K |  |  |
-| RepoHub |  | 3.9M |  |  |
+| DB Name | DB version | FTP size | FTP link |
+| -------- | -------- | -------- | -------- |
+| FOODB | Pre-release 1.0 | 63M | [http://agextend.ahujalab.iiitd.edu.in:8080/FOODB/](url) |
+| HMDB | v5.0 | 231M | [http://agextend.ahujalab.iiitd.edu.in:8080/HMDB/](url) |
+| IMPPAT | v2.0 | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/IMPPAT/](url) |
+| AfroDB | - | 756K | [http://agextend.ahujalab.iiitd.edu.in:8080/AfroDB/](url) |
+| AgingAtlas | v1.0 | 748K | [http://agextend.ahujalab.iiitd.edu.in:8080/AgingAtlas/](url) |
+| Chembridge | - | 788K | [http://agextend.ahujalab.iiitd.edu.in:8080/Chembridge/](url) |
+| ChemdivBBlocks | - | 39M | [http://agextend.ahujalab.iiitd.edu.in:8080/ChemdivBBlocks/](url) |
+| CMNPD | v1.0 | 20M | [http://agextend.ahujalab.iiitd.edu.in:8080/CMNPD/](url) |
+| DDPD | - | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/DDPD/](url) |
+| ECMDB | v2.0 | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/ECMDB/](url) |
+| RepoHub | release-3/24/2020 | 3.9M | [http://agextend.ahujalab.iiitd.edu.in:8080/RepoHub/](url) |
 
