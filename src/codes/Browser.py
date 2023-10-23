@@ -61,7 +61,7 @@ def license(key='',package_path=''):
                                                 f.write(write_byte.getbuffer())
                                         print('License installed successfuly :)')
                                 else:
-                                        print('Package path couild not be found !! please provide path along the licens :(')
+                                        print('Package path couild not be found !! please provide path along the license :(')
                 else:
                         print('Invalid license key provided !! AgeXtend activation failed :(')
 
@@ -430,19 +430,30 @@ def search(path='',query='Oc1ccc(cc1)C1CC(=O)c2c(O1)cc(cc2O)O',output=''):
       outpath=output+'/AgeXtendBrowserOut/'
   if not os.path.exists(outpath+'images/'):
     os.mkdir(outpath+'images')
-  
-  opath=path
-  if 'Chunk_0' in os.listdir(opath):
-    for c in range(len(os.listdir(path))):
-      if opath.endswith('/'):
-        path=opath+'Chunk_'+str(c)
-      else:
-        path=opath+'/Chunk_'+str(c)
-      lbs,val,fnd=probabilities(path=path,query=query)
-      if fnd=="Yes":
-        break
-    if fnd=="No":
-      return "Sorry, Query compound prediction data not found\nPlease proceed with Predictor module"
+
+  if len(path)>0:
+    st=license()
+    if st=='STOP':
+      return 0
+    else:
+      for dirpath, dirnames, files in os.walk(path):
+        for file_name in files:
+          if file_name.endswith('pkl'):
+            with open(dirpath+'/'+file_name, "rb") as file:
+              data_frame = pd.read_pickle(file)
+              data_frame.to_csv(dirpath+'/'+file_name.split('.')[0]+'.csv')  
+    opath=path
+    if 'Chunk_0' in os.listdir(opath):
+      for c in range(len(os.listdir(path))):
+        if opath.endswith('/'):
+          path=opath+'Chunk_'+str(c)
+        else:
+          path=opath+'/Chunk_'+str(c)
+        lbs,val,fnd=probabilities(path=path,query=query)
+        if fnd=="Yes":
+          break
+      if fnd=="No":
+        return "Sorry, Query compound prediction data not found\nPlease proceed with Predictor module"
   else:
     lbs,val,fnd=probabilities(path=path,query=query)
     if fnd=="No":
