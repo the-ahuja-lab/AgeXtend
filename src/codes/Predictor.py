@@ -2,10 +2,6 @@
 # coding: utf-8
 
 # # Importing Libraries
-
-# In[101]:
-
-
 import os
 import io
 import csv
@@ -195,8 +191,8 @@ def lipinsky_pass(data):
 
         mol = Chem.MolFromSmiles(i)
         if mol is None:
-            raise Exception('%s is not a valid SMILES string' % i)
-
+            print('%s is not a valid SMILES string. Please consider removing it before moving forward.' % smiles)
+            continue
         num_hdonors = Lipinski.NumHDonors(mol)
         num_hacceptors = Lipinski.NumHAcceptors(mol)
         mol_weight = Descriptors.MolWt(mol)
@@ -964,15 +960,21 @@ class model_MRTD:
     def extract_feature(self,model,data):
         F_names = model.feature_names_in_
         return data[F_names]
+    def conversion(self,preds_val):
+        micromol = []
+        for i in preds_val:
+            conv_val = (10**(i))*10**6
+            micromol.append(conv_val)
+        return micromol
     def test_model(self):
         test = self.test
         with resources.open_binary('AgeXtend','HOLY_MRTD_model_DTR_HPTuned_fitted.pkl') as fp:
                 model = fp.read()
         model = joblib.load(io.BytesIO(model))
         test_filtered = self.extract_feature(model,test.drop(['smiles'],axis=1))
-        preds = model.predict(test_filtered)    
-        return preds
-
+        preds = model.predict(test_filtered)
+        final_preds = self.conversion(preds)
+        return final_preds
 
 # In[42]:
 
@@ -1022,39 +1024,6 @@ def binding_data(testset_bits):
         temp['Tanimoto_Similarity'] = [ts[1] for ts in sim_dict]
         final_df = pd.concat([temp, final_df], axis=0, ignore_index=True)
     return lipinsky_pass(final_df)
-'''
-def binding_data(testset):
-    with resources.open_binary('AgeXtend','BINDINGDB_db_MFPs.pkl') as fp:
-        db_file = fp.read()
-    bindingdb_file = pickle.load(io.BytesIO(db_file))
-
-    with resources.open_binary('AgeXtend','BINDINGDB_MFPs.pkl') as fp:
-        mfps_file = fp.read()
-    bindingdb_mfps = pickle.load(io.BytesIO(mfps_file))
-    
-    print('Finding targets from BindingDB database. This may take a while. . .')
-    sims = defaultdict(dict)
-    x = 0
-    for i in testset.iterrows():
-        for y in bindingdb_mfps.iterrows():
-            name = str(x) + '_' + str(y[0])
-            sims[str(x)][name] = DataStructs.TanimotoSimilarity(DataStructs.ExplicitBitVect(y[1][0]),i[1][1])
-        x += 1
-    final_df = pd.DataFrame()
-    for i in sims:
-        values = list(sims[i].values())
-        max_value = np.max(list(sims[i].values()))
-        ind_list = [k for k,v in sims[i].items() if v == max_value]
-        indices = []
-        for t in ind_list[0:3]:
-            indices.append(t.split('_')[1])
-        temp=pd.DataFrame()
-        temp = bindingdb_file.loc[[int(x) for x in indices]]
-        temp['Query_smiles'] = testset['query_smiles'][int(i)]
-        temp['Tanimoto_Similarity'] = max_value
-        final_df = pd.concat([temp,final_df],axis=0,ignore_index=True)
-    return lipinsky_pass(final_df)
-'''
 
 # In[96]:
 
@@ -1071,8 +1040,8 @@ def hallmark_tanimoto_test(test_df):
     final_df = pd.DataFrame()
 
     for p in test_df.iterrows():
-        temp_df = pd.DataFrame(index=[0],columns=['Query_Smile'])
-        temp_df.loc[[0],['Query_Smile']] = p[1][0]
+        temp_df = pd.DataFrame(index=[0],columns=['Query_SMILES'])
+        temp_df.loc[[0],['Query_SMILES']] = p[1][0]
 
         for i in tqdm(range(len(subcat))):
             x = 0
@@ -1084,10 +1053,10 @@ def hallmark_tanimoto_test(test_df):
             index_smile = [k for k,v in sims[subcat[i]].items() if v == max_value][0]
 
             temp_df[subcat[i]+'_TS'] = max_value
-            temp_df[subcat[i]+'_smile'] = index_smile
+            temp_df[subcat[i]+'_SMILES'] = index_smile
             x += 1
         final_df = pd.concat([final_df,temp_df],axis=0)
-    print('Done Explainability Tanimoto Test Results.')
+    print('Done Sub-Explainability Tanimoto Test Results.')
     return final_df
 
 
@@ -1344,8 +1313,8 @@ def AgeXtend_Tox_Predictions(Sig_data, hallmark_tox_probs):
     
     m25 = model_MRTD(hoa_input_df)
     preds = m25.test_model()
-    probabilities['MRTD (mg/day)'] = preds
-    predictions['MRTD (mg/day)'] = preds
+    probabilities['MRTD (uMol)'] = preds
+    predictions['MRTD (uMol)'] = preds
     print('Done with AgeXtend predictions module.')
     
     if hallmark_tox_probs == True:
@@ -1420,7 +1389,7 @@ def bulk_predict(input=[],outfolder='AgeXtendDB',chunksize=10000):
 		with open(outfolder+'/canage_predictions.pkl', 'wb') as file:
 			pickle.dump(out_canpred, file)
 		with open(outfolder+'/hallmark_tanimoto_test.pkl', 'wb') as file:
-			pickle.dump(out_htlm, file)
+			pickle.dump(out_hltm, file)
 		with open(outfolder+'/bindingdb_info.pkl', 'wb') as file:
 			pickle.dump(out_bindb, file)
 		with open(outfolder+'/lipinsky_info.pkl', 'wb') as file:
@@ -1445,7 +1414,7 @@ def bulk_predict(input=[],outfolder='AgeXtendDB',chunksize=10000):
 			with open(outfolder+'/Chunk_'+str(x)+'/canage_predictions.pkl', 'wb') as file:
 				pickle.dump(out_canpred, file)
 			with open(outfolder+'/Chunk_'+str(x)+'/hallmark_tanimoto_test.pkl', 'wb') as file:
-				pickle.dump(out_htlm, file)
+				pickle.dump(out_hltm, file)
 			with open(outfolder+'/Chunk_'+str(x)+'/bindingdb_info.pkl', 'wb') as file:
 				pickle.dump(out_bindb, file)
 			with open(outfolder+'/Chunk_'+str(x)+'/lipinsky_info.pkl', 'wb') as file:
