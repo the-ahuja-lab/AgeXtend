@@ -7,8 +7,8 @@
 <br>
 
 **AgeXtend** is a multimodal, bioactivity-based, and mechanism-backed Explainable AI Predictor for geroprotectors. AgeXtend supports 2 distinct work packages: Predictor and Browser.
-The first work package, **Predictor**, involves a bioactivity-based classifier for predicting geroprotective compounds, coupled with an **explainability** module providing mechanistic insights into biological processes behind the predictions, a **toxicity** module to evaluate their toxicity in the biological context, and finally, a **target** module that suggests protein targets of the putative geroprotective compounds.
-The second work package, **Browser**, allows the user to explore through the 20 pre-screened databases specifically curated for these functionalities.
+The first work package, **Predictor**, involves a bioactivity-based classifier (**Geroprediction** module) for predicting geroprotective compounds, coupled with an **Explainability** module providing mechanistic insights into biological processes behind the predictions, a **Toxicity** module to evaluate their toxicity in the biological context, and finally, a **Target** module that suggests protein targets of the putative geroprotective compounds.
+The second work package, **Browser**, allows users to explore through the 20 pre-screened databases specifically curated for these functionalities.
 
 ## License Key
 
@@ -69,7 +69,7 @@ AgeXtend supports 2 distinct work packages:<br/>
 
 ### Predictor
 
-#### Prediction and Explainability Module ####
+#### Geroprediction and Explainability Modules ####
 
 Predicts the anti-aging potential for the input SMILES:<br/>
 ```
@@ -175,15 +175,15 @@ Unzip the **AgeXtendBrowserOut.zip** file to visualize/print the generated repor
 ### Pre-complied AgeXtend Prediction Databases
 | DB Name | DB version | FTP size | FTP link |
 | -------- | -------- | -------- | -------- |
-| FOODB | Pre-release 1.0 | 63M | [http://agextend.ahujalab.iiitd.edu.in:8080/FOODB/](url) |
+| FooDB | Pre-release 1.0 | 63M | [http://agextend.ahujalab.iiitd.edu.in:8080/FOODB/](url) |
 | HMDB | v5.0 | 231M | [http://agextend.ahujalab.iiitd.edu.in:8080/HMDB/](url) |
 | IMPPAT | v2.0 | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/IMPPAT/](url) |
-| AfroDB | - | 756K | [http://agextend.ahujalab.iiitd.edu.in:8080/AfroDB/](url) |
+| AfroDb | - | 756K | [http://agextend.ahujalab.iiitd.edu.in:8080/AfroDB/](url) |
 | AgingAtlas | v1.0 | 748K | [http://agextend.ahujalab.iiitd.edu.in:8080/AgingAtlas/](url) |
-| Chembridge | - | 788K | [http://agextend.ahujalab.iiitd.edu.in:8080/Chembridge/](url) |
-| ChemdivBBlocks | - | 39M | [http://agextend.ahujalab.iiitd.edu.in:8080/ChemdivBBlocks/](url) |
+| ChemBridge | - | 788K | [http://agextend.ahujalab.iiitd.edu.in:8080/Chembridge/](url) |
+| ChemDiv BBlocks | - | 39M | [http://agextend.ahujalab.iiitd.edu.in:8080/ChemdivBBlocks/](url) |
 | CMNPD | v1.0 | 20M | [http://agextend.ahujalab.iiitd.edu.in:8080/CMNPD/](url) |
-| DDPD | - | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/DDPD/](url) |
+| DDPEDB | - | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/DDPD/](url) |
 | ECMDB | v2.0 | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/ECMDB/](url) |
 | RepoHub | release-3/24/2020 | 3.9M | [http://agextend.ahujalab.iiitd.edu.in:8080/RepoHub/](url) |
 
