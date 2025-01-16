@@ -67,7 +67,7 @@ $ docker exec -it <container-ID> bash
 ### **STEP-I License Key Application**
 
 
-Run the following command to get the hostname (image name) and the IP address of your running container.
+Run the following command to get the hostname (container ID) and the IP address of your running container.
 
 ```
 cat /etc/hostname
