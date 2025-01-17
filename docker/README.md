@@ -35,6 +35,8 @@ Instructions for installing and running docker on any PC can be found [here](htt
 2. [MacOS](https://docs.docker.com/desktop/install/mac-install/)
 3. [Linux](https://docs.docker.com/desktop/install/linux-install/)
 
+**The Docker image for AgeXtend is currently only available for Linux systems. Please stay tuned for Windows and MacOS compatible versions.**
+
 Pull the **AgeXtend** image from Docker Hub by running the following command in your terminal:
 ```
 $ docker pull sanjayk741/agextend
