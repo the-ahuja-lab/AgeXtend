@@ -175,15 +175,15 @@ Unzip the **AgeXtendBrowserOut.zip** file to visualize/print the generated repor
 ### Pre-complied AgeXtend Prediction Databases
 | DB Name | DB version | FTP size | FTP link |
 | -------- | -------- | -------- | -------- |
-| FooDB | Pre-release 1.0 | 63M | [http://agextend.ahujalab.iiitd.edu.in:8080/FOODB/](url) |
-| HMDB | v5.0 | 231M | [http://agextend.ahujalab.iiitd.edu.in:8080/HMDB/](url) |
-| IMPPAT | v2.0 | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/IMPPAT/](url) |
-| AfroDb | - | 756K | [http://agextend.ahujalab.iiitd.edu.in:8080/AfroDB/](url) |
-| AgingAtlas | v1.0 | 748K | [http://agextend.ahujalab.iiitd.edu.in:8080/AgingAtlas/](url) |
-| ChemBridge | - | 788K | [http://agextend.ahujalab.iiitd.edu.in:8080/Chembridge/](url) |
-| ChemDiv BBlocks | - | 39M | [http://agextend.ahujalab.iiitd.edu.in:8080/ChemdivBBlocks/](url) |
-| CMNPD | v1.0 | 20M | [http://agextend.ahujalab.iiitd.edu.in:8080/CMNPD/](url) |
-| DDPEDB | - | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/DDPD/](url) |
-| ECMDB | v2.0 | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/ECMDB/](url) |
-| RepoHub | release-3/24/2020 | 3.9M | [http://agextend.ahujalab.iiitd.edu.in:8080/RepoHub/](url) |
+| FooDB | Pre-release 1.0 | 63M | [http://agextend.ahujalab.iiitd.edu.in:8080/FOODB/](http://agextend.ahujalab.iiitd.edu.in:8080/FOODB/) |
+| HMDB | v5.0 | 231M | [http://agextend.ahujalab.iiitd.edu.in:8080/HMDB/](http://agextend.ahujalab.iiitd.edu.in:8080/HMDB/) |
+| IMPPAT | v2.0 | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/IMPPAT/](http://agextend.ahujalab.iiitd.edu.in:8080/IMPPAT/) |
+| AfroDb | - | 756K | [http://agextend.ahujalab.iiitd.edu.in:8080/AfroDB/](http://agextend.ahujalab.iiitd.edu.in:8080/AfroDB/) |
+| AgingAtlas | v1.0 | 748K | [http://agextend.ahujalab.iiitd.edu.in:8080/AgingAtlas/](http://agextend.ahujalab.iiitd.edu.in:8080/AgingAtlas/) |
+| ChemBridge | - | 788K | [http://agextend.ahujalab.iiitd.edu.in:8080/Chembridge/](http://agextend.ahujalab.iiitd.edu.in:8080/Chembridge/) |
+| ChemDiv BBlocks | - | 39M | [http://agextend.ahujalab.iiitd.edu.in:8080/ChemdivBBlocks/](http://agextend.ahujalab.iiitd.edu.in:8080/ChemdivBBlocks/) |
+| CMNPD | v1.0 | 20M | [http://agextend.ahujalab.iiitd.edu.in:8080/CMNPD/](http://agextend.ahujalab.iiitd.edu.in:8080/CMNPD/) |
+| DDPEDB | - | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/DDPD/](http://agextend.ahujalab.iiitd.edu.in:8080/DDPD/) |
+| ECMDB | v2.0 | 4K | [http://agextend.ahujalab.iiitd.edu.in:8080/ECMDB/](http://agextend.ahujalab.iiitd.edu.in:8080/ECMDB/) |
+| RepoHub | release-3/24/2020 | 3.9M | [http://agextend.ahujalab.iiitd.edu.in:8080/RepoHub/](http://agextend.ahujalab.iiitd.edu.in:8080/RepoHub/) |
 
