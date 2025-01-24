@@ -64,7 +64,7 @@ $ docker exec -it <container-ID> bash
 
 ## Using **AgeXtend**
 
-**AgeXtend is free for academic institutions, however, for commercial utilization a commercial license key is required. Academic users may apply for a valid "License Key" [here](https://forms.gle/y1sCpSGEAML8XWGGA). Commerical users may request the license key from Dr. Gaurav Ahuja (gaurav.ahuja@iiitd.ac.in).**
+**AgeXtend is free for academic institutions, however, for commercial utilization a commercial license key is required. Academic users may apply for a valid "License Key" [here](https://forms.gle/y1sCpSGEAML8XWGGA). Commercial users may request the license key from Dr. Gaurav Ahuja (gaurav.ahuja@iiitd.ac.in).**
 
 
 ### **STEP-I License Key Application**
@@ -78,6 +78,11 @@ hostname -I
 ```
 
 ### **STEP-II Import and Run AgeXtend**
+
+MacOS users will have to activate the conda environment for running AgeXtend using the following command:
+```
+$ conda activate py38
+```
 #### EITHER
 Run AgeXtend by python **command line** mode directly in the terminal.
 ```
