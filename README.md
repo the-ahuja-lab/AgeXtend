@@ -21,6 +21,7 @@ You can also generate your own predictions using AgeXtend’s [Colab notebook](h
 **Major dependencies**
 1. [Signaturizer (v1.1.11)](https://gitlabsbnb.irbbarcelona.org/packages/signaturizer)
 2. [RDKit (v2022.3.1)](https://www.rdkit.org/)
+3. Python (v3.8)
 
 **Minor dependencies**
 1. os
